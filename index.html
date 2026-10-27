@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio 2026 | Periodismo, Streaming &amp; Tecnolog&iacute;as</title>
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6.5 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Google Fonts: Inter & Space Grotesk -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-base: #0a0a12;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --accent-cyan: #00f2fe;
+            --accent-violet: #7928ca;
+            --accent-pink: #ff0080;
+            --accent-green: #00dfa2;
+            --accent-gold: #ffb703;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(121, 40, 202, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(0, 242, 254, 0.12) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, h4, h5, .brand-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Glassmorphism Navbar */
+        .glass-nav {
+            background: rgba(10, 10, 18, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        /* Bento Grid Architecture */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+
+        .bento-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 1.8rem;
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 242, 254, 0.1);
+        }
+
+        /* Profile Avatar Glow */
+        .avatar-wrapper {
+            position: relative;
+            width: 170px;
+            height: 170px;
+            margin: 0 auto;
+        }
+
+        .avatar-glow {
+            position: absolute;
+            inset: -4px;
+            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-violet), var(--accent-pink));
+            border-radius: 50%;
+            filter: blur(10px);
+            opacity: 0.7;
+            animation: pulse-glow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% { opacity: 0.5; transform: scale(0.98); }
+            100% { opacity: 0.9; transform: scale(1.02); }
+        }
+
+        .avatar-img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--bg-base);
+            cursor: pointer;
+        }
+
+        /* Badges 2026 */
+        .badge-status {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.35rem 0.8rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-in-progress {
+            background: rgba(0, 242, 254, 0.15);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+        }
+
+        .badge-advanced {
+            background: rgba(121, 40, 202, 0.15);
+            color: #c084fc;
+            border: 1px solid rgba(121, 40, 202, 0.3);
+        }
+
+        .badge-degree {
+            background: rgba(255, 183, 3, 0.15);
+            color: var(--accent-gold);
+            border: 1px solid rgba(255, 183, 3, 0.3);
+        }
+
+        .badge-live {
+            background: rgba(255, 0, 128, 0.2);
+            color: var(--accent-pink);
+            border: 1px solid rgba(255, 0, 128, 0.4);
+        }
+
+        /* Gradient Text */
+        .text-gradient-cyan {
+            background: linear-gradient(135deg, #fff 30%, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-pink {
+            background: linear-gradient(135deg, #fff 30%, var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Icon Boxes */
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .icon-cyan { background: rgba(0, 242, 254, 0.1); color: var(--accent-cyan); }
+        .icon-violet { background: rgba(121, 40, 202, 0.1); color: #c084fc; }
+        .icon-pink { background: rgba(255, 0, 128, 0.1); color: var(--accent-pink); }
+        .icon-green { background: rgba(0, 223, 162, 0.1); color: var(--accent-green); }
+        .icon-gold { background: rgba(255, 183, 3, 0.1); color: var(--accent-gold); }
+
+        /* Course Pills */
+        .course-pill {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 0.8rem 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .course-pill:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(0, 242, 254, 0.4);
+            transform: translateX(4px);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--card-border);
+            background: rgba(10, 10, 18, 0.9);
+        }
+
+        /* Responsive Grid adjustments */
+        @media (max-width: 991px) {
+            .col-span-12, .col-span-8, .col-span-7, .col-span-6, .col-span-5, .col-span-4 {
+                grid-column: span 12 !important;
+            }
+        }
+        @media (min-width: 992px) {
+            .col-span-12 { grid-column: span 12; }
+            .col-span-8  { grid-column: span 8; }
+            .col-span-7  { grid-column: span 7; }
+            .col-span-6  { grid-column: span 6; }
+            .col-span-5  { grid-column: span 5; }
+            .col-span-4  { grid-column: span 4; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top glass-nav navbar-dark py-3">
+        <div class="container">
+            <a class="navbar-brand brand-font fw-bold fs-4" href="#hero">
+                <i class="fa-solid fa-wave-square text-info me-2"></i>PORTAFOLIO<span class="text-info">2026</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-3">
+                    <li class="nav-item"><a class="nav-link active" href="#hero">Perfil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#formacion">Formaci&oacute;n</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#cursos">Cursos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tech">Tecnolog&iacute;as</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="container py-5 mt-5" id="hero">
+        
+        <!-- BENTO GRID SYSTEM -->
+        <div class="bento-grid">
+            
+            <!-- CARD 1: HERO / PROFILE (Span 7) -->
+            <div class="bento-card col-span-7 d-flex flex-column justify-content-between">
+                <div class="row align-items-center g-4">
+                    <div class="col-12 col-sm-5 text-center">
+                        <div class="avatar-wrapper" onclick="document.getElementById('file-input').click();" title="Haz clic para cargar tu foto">
+                            <div class="avatar-glow"></div>
+                            <img src="img/tu_foto.jpg" alt="Foto de Perfil" id="avatar-preview" class="avatar-img" onerror="this.src='https://via.placeholder.com/170x170/0a0a12/00f2fe?text=Foto+Perfil';">
+                        </div>
+                        <input type="file" id="file-input" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                        <small class="text-muted d-block mt-2 fs-7"><i class="fa-solid fa-camera me-1"></i> Cargar foto</small>
+                    </div>
+                    <div class="col-12 col-sm-7 text-center text-sm-start">
+                        <span class="badge badge-status badge-live mb-2"><i class="fa-solid fa-circle me-1"></i> Creadora Streamer</span>
+                        <h1 class="display-6 fw-bold text-gradient-cyan mb-1">Tu Nombre y Apellido</h1>
+                        <h3 class="h5 text-muted fw-normal mb-3">Periodista &amp; Comunicadora Digital</h3>
+                        <p class="text-secondary small mb-0">
+                            Especializada en la convergencia entre el periodismo de investigaci&oacute;n, transmisiones en vivo, el &aacute;mbito jur&iacute;dico y el impacto de las tecnolog&iacute;as emergentes.
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center justify-content-sm-start gap-3 mt-4 pt-3 border-top border-secondary border-opacity-25 fs-4">
+                    <a href="#" class="text-secondary hover-cyan" title="Twitch"><i class="fa-brands fa-twitch"></i></a>
+                    <a href="#" class="text-secondary hover-cyan" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="text-secondary hover-cyan" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" class="text-secondary hover-cyan" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="text-secondary hover-cyan" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <!-- CARD 2: LIVE STREAMING WIDGET (Span 5) -->
+            <div class="bento-card col-span-5 d-flex flex-column justify-content-between bg-gradient-dark">
+                <div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="icon-box icon-pink mb-0"><i class="fa-solid fa-broadcast-tower"></i></div>
+                        <span class="badge badge-status badge-live" id="stream-status-badge">EN VIVO</span>
+                    </div>
+                    <h4 class="fw-bold mb-2">Canal de Streaming</h4>
+                    <p class="text-secondary small">Transmisi&oacute;n y debate en directo sobre actualidad period&iacute;stica, tecnolog&iacute;as, IA y ciberseguridad.</p>
+                </div>
+                <div class="p-3 rounded-4 bg-dark bg-opacity-50 border border-secondary border-opacity-25 text-center mt-3">
+                    <div class="fs-5 fw-bold text-light mb-1" id="stream-title">Debate en Vivo: Periodismo e IA</div>
+                    <small class="text-muted d-block mb-3" id="stream-sub">Multi-platform Broadcast</small>
+                    <button class="btn btn-sm btn-outline-light rounded-pill px-4" onclick="toggleStreamState()">
+                        <i class="fa-solid fa-power-off me-2 text-pink"></i>Simular Estado Stream
+                    </button>
+                </div>
+            </div>
+
+            <!-- SECTION TITLE: FORMACIÓN ACADÉMICA -->
+            <div class="col-span-12 mt-4" id="formacion">
+                <h2 class="h3 fw-bold text-gradient-cyan mb-1">Formaci&oacute;n Acad&eacute;mica 2026</h2>
+                <p class="text-muted small">Trayectoria universitaria, titulaciones t&eacute;cnicas y estudios de grado.</p>
+            </div>
+
+            <!-- CARD 3: PERIODISMO Y MEDIOS (Span 4) -->
+            <div class="bento-card col-span-4">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <div class="icon-box icon-cyan"><i class="fa-solid fa-newspaper"></i></div>
+                    <span class="badge badge-status badge-advanced">En Curso &bull; Avanzado</span>
+                </div>
+                <h4 class="fw-bold mb-1">Periodismo y Medios</h4>
+                <h6 class="text-info opacity-75 mb-3">Licenciatura en Ciencias de la Comunicaci&oacute;n</h6>
+                <p class="text-secondary small mb-0">
+                    Formaci&oacute;n universitaria avanzada en investigaci&oacute;n period&iacute;stica, &eacute;tica de la informaci&oacute;n, redacci&oacute;n para medios convergentes y an&aacute;lisis del discurso.
+                </p>
+            </div>
+
+            <!-- CARD 4: DIPLOMATURA EN STREAMING & CONTENIDO (Span 4) -->
+            <div class="bento-card col-span-4">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <div class="icon-box icon-pink"><i class="fa-solid fa-video"></i></div>
+                    <span class="badge badge-status badge-in-progress">En Curso</span>
+                </div>
+                <h4 class="fw-bold mb-1">Diplomatura en Streaming &amp; Contenido</h4>
+                <h6 class="text-pink opacity-75 mb-3">Producci&oacute;n Multimedia &amp; Audiencias</h6>
+                <p class="text-secondary small mb-0">
+                    Especializaci&oacute;n en planificaci&oacute;n, producci&oacute;n ejecutiva, gesti&oacute;n de comunidades en directo y narrativas interactivas.
+                </p>
+            </div>
+
+            <!-- CARD 5: TÉCNICO SUPERIOR JURÍDICO C/O NOTARIAL (Span 4) -->
+            <div class="bento-card col-span-4">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <div class="icon-box icon-gold"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <span class="badge badge-status badge-degree">T&iacute;tulo T&eacute;cnico</span>
+                </div>
+                <h4 class="fw-bold mb-1">T&eacute;cnico Superior Jur&iacute;dico</h4>
+                <h6 class="text-warning opacity-75 mb-3">Con Orientaci&oacute;n Notarial</h6>
+                <p class="text-secondary small mb-0">
+                    Formaci&oacute;n t&eacute;cnica en derecho, procedimientos administrativos, instrumentaci&oacute;n notarial y marco legal aplicado.
+                </p>
+            </div>
+
+            <!-- SECTION TITLE: CAPACITACIÓN TECNOLÓGICA -->
+            <div class="col-span-12 mt-4" id="tech">
+                <h2 class="h3 fw-bold text-gradient-cyan mb-1">Capacitaci&oacute;n en Tecnolog&iacute;as Emergentes</h2>
+                <p class="text-muted small">Estudios activos en la intersecci&oacute;n entre desarrollo, ciberseguridad e Inteligencia Artificial.</p>
+            </div>
+
+            <!-- CARD 6: INTELIGENCIA ARTIFICIAL (Span 4) -->
+            <div class="bento-card col-span-4">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <div class="icon-box icon-violet"><i class="fa-solid fa-brain"></i></div>
+                    <span class="badge badge-status badge-in-progress">En Curso</span>
+                </div>
+                <h4 class="fw-bold mb-2">Inteligencia Artificial</h4>
+                <p class="text-secondary small mb-0">
+                    Capacitaci&oacute;n activa en herramientas de IA generativa, prompt engineering, automatizaci&oacute;n de flujos de trabajo period&iacute;sticos y an&aacute;lisis de datos.
+                </p>
+            </div>
+
+            <!-- CARD 7: DESARROLLO WEB / APP (Span 4) -->
+            <div class="bento-card col-span-4">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <div class="icon-box icon-green"><i class="fa-solid fa-code"></i></div>
+                    <span class="badge badge-status badge-in-progress">En Curso</span>
+                </div>
+                <h4 class="fw-bold mb-2">Desarrollo Web / App</h4>
+                <p class="text-secondary small mb-0">
+                    Dise&ntilde;o y programaci&oacute;n frontend (HTML5, CSS3, JavaScript, Bootstrap) orientados a portales de noticias e interfaces interactivas.
+                </p>
+            </div>
+
+            <!-- CARD 8: CIBERSEGURIDAD (Span 4) -->
+            <div class="bento-card col-span-4">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <div class="icon-box icon-cyan"><i class="fa-solid fa-shield-halved"></i></div>
+                    <span class="badge badge-status badge-in-progress">En Curso</span>
+                </div>
+                <h4 class="fw-bold mb-2">Ciberseguridad</h4>
+                <p class="text-secondary small mb-0">
+                    Fundamentos de protecci&oacute;n de datos personales, seguridad en redes, prevenci&oacute;n de amenazas digitales y buenas pr&aacute;cticas para fuentes period&iacute;sticas.
+                </p>
+            </div>
+
+            <!-- SECTION TITLE: CURSOS Y CERTIFICACIONES -->
+            <div class="col-span-12 mt-4" id="cursos">
+                <h2 class="h3 fw-bold text-gradient-cyan mb-1">Cursos y Certificaciones</h2>
+                <p class="text-muted small">Capacitaciones complementarias en producci&oacute;n multimedia, tecnolog&iacute;a y comunicaci&oacute;n.</p>
+            </div>
+
+            <!-- CARD 9: LISTA DE CURSOS (Span 12) -->
+            <div class="bento-card col-span-12">
+                <div class="row g-3">
+                    
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="course-pill">
+                            <i class="fa-solid fa-podcast text-info fs-5"></i>
+                            <div>
+                                <strong class="d-block text-light">Podcast</strong>
+                                <small class="text-muted">Producci&oacute;n &amp; Guionismo Sonoro</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="course-pill">
+                            <i class="fa-solid fa-sliders text-pink fs-5"></i>
+                            <div>
+                                <strong class="d-block text-light">Conducci&oacute;n y Producci&oacute;n en Streaming</strong>
+                                <small class="text-muted">Estrategias de Emisi&oacute;n en Vivo</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="course-pill">
+                            <i class="fa-solid fa-robot text-violet fs-5"></i>
+                            <div>
+                                <strong class="d-block text-light">IA, Redes y Narrativa Digital</strong>
+                                <small class="text-muted">Formaci&nacute;n en Nuevos Medios</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="course-pill">
+                            <i class="fa-brands fa-android text-success fs-5"></i>
+                            <div>
+                                <strong class="d-block text-light">Desarrollo de Apps para Android</strong>
+                                <small class="text-muted">Programaci&oacute;n M&oacute;vil</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="course-pill">
+                            <i class="fa-solid fa-comments text-warning fs-5"></i>
+                            <div>
+                                <strong class="d-block text-light">PNL Aplicada al Trabajo</strong>
+                                <small class="text-muted">Programaci&oacute;n Neuroling&uuml;&iacute;stica</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="course-pill">
+                            <i class="fa-solid fa-bullhorn text-cyan fs-5"></i>
+                            <div>
+                                <strong class="d-block text-light">Comunicaci&oacute;n Efectiva</strong>
+                                <small class="text-muted">T&eacute;cnicas de Oratoria &amp; Persuasi&oacute;n</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center text-secondary mt-5">
+        <div class="container">
+            <p class="mb-0 small">&copy; 2026 | Dise&ntilde;ado para <a href="#" class="text-info text-decoration-none">Tu Nombre</a> &bull; Portafolio Profesional</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Carga dinámica de la foto de perfil desde el equipo local
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const output = document.getElementById('avatar-preview');
+                output.src = reader.result;
+            };
+            if(event.target.files[0]) {
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        }
+
+        // Alternador interactivo para el widget de streaming
+        let isLive = true;
+        function toggleStreamState() {
+            const badge = document.getElementById('stream-status-badge');
+            const title = document.getElementById('stream-title');
+            const sub = document.getElementById('stream-sub');
+
+            if (isLive) {
+                badge.className = 'badge badge-status bg-secondary text-light';
+                badge.innerHTML = 'OFFLINE';
+                title.innerText = 'Pr\u00f3xima Transmisi\u00f3n';
+                sub.innerText = 'Horario regular de streaming';
+                isLive = false;
+            } else {
+                badge.className = 'badge badge-status badge-live';
+                badge.innerHTML = 'EN VIVO';
+                title.innerText = 'Debate en Vivo: Periodismo e IA';
+                sub.innerText = 'Multi-platform Broadcast';
+                isLive = true;
+            }
+        }
+    </script>
+</body>
+</html>
