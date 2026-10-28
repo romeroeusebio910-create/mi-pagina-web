@@ -26,6 +26,78 @@
         }
 
         body {
+            <!-- MENÚ DESPLEGABLE PERSONALIZADO -->
+<style>
+  .menu-personal {
+    position: relative;
+    display: inline-block;
+    margin: 15px;
+    font-family: Arial, sans-serif;
+  }
+
+  .boton-menu {
+    background: #24292f;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .contenido-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    min-width: 230px;
+    background: white;
+    box-shadow: 0 4px 12px #0003;
+    border-radius: 6px;
+    z-index: 9999;
+  }
+
+  .contenido-menu a {
+    display: block;
+    padding: 12px 15px;
+    color: #24292f;
+    text-decoration: none;
+  }
+
+  .contenido-menu a:hover {
+    background: #f0f3f6;
+  }
+
+  .contenido-menu.mostrar {
+    display: block;
+  }
+</style>
+
+<div class="menu-personal">
+  <button
+    class="boton-menu"
+    type="button"
+    onclick="document.getElementById('opciones-menu')
+      .classList.toggle('mostrar')"
+    aria-expanded="false"
+    aria-controls="opciones-menu">
+    Mi menú ▼
+  </button>
+
+  <div class="contenido-menu" id="opciones-menu">
+    <a href="https://github.com/romeroeusebio910-create">
+      Mi perfil
+    </a>
+
+    <a href="https://github.com/romeroeusebio910-create?tab=repositories">
+      Mis proyectos o repositorios
+    </a>
+
+    <a href="https://romeroeusebio910-creat.github.io/mi-pagina-web/">
+      Mis páginas web
+    </a>
+  </div>
+</div>
+<!-- FIN DEL MENÚ PERSONALIZADO -->
             background-color: var(--bg-base);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
